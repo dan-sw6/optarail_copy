@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+      <PackageReference Include="Syncfusion.Shared.WPF" Version="21.2.5" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="21.2.5" />
+</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OptaRail.Modules.PrimaryModule\OptaRail.Modules.Primary.csproj" />
+  </ItemGroup>
+</Project>
