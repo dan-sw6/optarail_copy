@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace OptaRail.Domain
+namespace OptaRail.Infrastructure
 {
     public interface IGenericRepository<T> where T : class
     {

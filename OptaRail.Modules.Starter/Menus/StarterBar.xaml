@@ -1,0 +1,21 @@
+﻿<syncfusion:GroupBarItem x:Class="OptaRail.Modules.Starter.Menus.StarterBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"   
+             xmlns:prism="http://prismlibrary.com/"
+             Header="PES"
+
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <syncfusion:GroupView  >
+        <syncfusion:GroupViewItem
+            Name="inbox"
+            ImageHorizontalAlignment="Right"
+            Text="Inbox"
+            ToolTip="Inbox" />
+        <syncfusion:GroupViewItem
+            Name="outbox"
+            ImageHorizontalAlignment="Right"
+            Text="Outbox"
+            ToolTip="Outbox" />
+    </syncfusion:GroupView>
+</syncfusion:GroupBarItem>

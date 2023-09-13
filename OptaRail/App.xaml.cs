@@ -1,11 +1,12 @@
 ﻿using OptaRail.Views;
 using Prism.Ioc;
 using System.Windows;
-using OptaRail.Modules.Primary;
 using Prism.Modularity;
 using Prism.Regions;
 using OptaRail.Core.Adapters;
+using OptaRail.Modules.Starter;
 using Syncfusion.Windows.Tools.Controls;
+using OptaRail.Core.Behaviors;
 
 namespace OptaRail
 {
@@ -16,11 +17,13 @@ namespace OptaRail
     {
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt+QHJqUE1hXk5Hd0BLVGpAblJ3T2ZQdVt5ZDU7a15RRnVfRF9gSX9Wc0ZrXnlWdg==;Mgo+DSMBPh8sVXJ1S0R+WVpFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF5jT3xQdkRmXHxWd3xcQA==;ORg4AjUWIQA/Gnt2VFhiQlRPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSXhRdUViXHpdeHxVRWY=;MjQ5ODkzNUAzMjMxMmUzMDJlMzBEZmU3cFJTNFdTbGczSkFqSFhqRi9UaVQyR3NCMDNwRmNOdWcxUGE2TWw0PQ==;MjQ5ODkzNkAzMjMxMmUzMDJlMzBKb2kybnprazJEczdXZzdybjlMbUpyRDlDV2xjemFySXhRd1dxMm0ybXBvPQ==;NRAiBiAaIQQuGjN/V0d+Xk9BfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hSn5VdEZjWHpbc3xdQWNa;MjQ5ODkzOEAzMjMxMmUzMDJlMzBnd1pPZXhGL2h2Zk5tRTMzN0I4cjhMZTFmNmpSVGZnMnVkUDlBemxBMzRFPQ==;MjQ5ODkzOUAzMjMxMmUzMDJlMzBMM2dLcFBlT2h2UlppODJ4aFRvOHVPVHlUZGYvazNIcjVUeFI2blIzUHpnPQ==;Mgo+DSMBMAY9C3t2VFhiQlRPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSXhRdUViXHpdeH1RQmY=;MjQ5ODk0MUAzMjMxMmUzMDJlMzBtWEZ4UE93dzZnM3FMQ0hybGxja0taRzJSdkM3RlB0NGQzVFJTTzhRU0hNPQ==;MjQ5ODk0MkAzMjMxMmUzMDJlMzBEZy9hVkZFWTdveTZwazBXY1BFMXk4RkxlcVBucUQvakRQcHk2QnJoK0RjPQ==;MjQ5ODk0M0AzMjMxMmUzMDJlMzBnd1pPZXhGL2h2Zk5tRTMzN0I4cjhMZTFmNmpSVGZnMnVkUDlBemxBMzRFPQ==");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NGaF1cXGFCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdgWXZfcHRTRGldUEx1XkQ=");
+
         }
 
         protected override Window CreateShell()
         {
+
             return Container.Resolve<MainWindow>();
         }
 
@@ -31,28 +34,39 @@ namespace OptaRail
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<PrimaryModule>();
+            moduleCatalog.AddModule<StarterModule>();
         }
 
-        //protected override void OnInitialized()
-        //{
-        //    var startup = Container.Resolve<StartupWindow>();
-        //    var result = startup.ShowDialog();
-        //    if (result != null && result.Value)
-        //    {
-        //        base.OnInitialized(); 
+        protected override void OnInitialized()
+        {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt+QHJqUE1hXk5Hd0BLVGpAblJ3T2ZQdVt5ZDU7a15RRnVfRF9gSX9Wc0ZrXnlWdg==;Mgo+DSMBPh8sVXJ1S0R+WVpFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF5jT3xQdkRmXHxWd3xcQA==;ORg4AjUWIQA/Gnt2VFhiQlRPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSXhRdUViXHpdeHxVRWY=;MjQ5ODkzNUAzMjMxMmUzMDJlMzBEZmU3cFJTNFdTbGczSkFqSFhqRi9UaVQyR3NCMDNwRmNOdWcxUGE2TWw0PQ==;MjQ5ODkzNkAzMjMxMmUzMDJlMzBKb2kybnprazJEczdXZzdybjlMbUpyRDlDV2xjemFySXhRd1dxMm0ybXBvPQ==;NRAiBiAaIQQuGjN/V0d+Xk9BfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hSn5VdEZjWHpbc3xdQWNa;MjQ5ODkzOEAzMjMxMmUzMDJlMzBnd1pPZXhGL2h2Zk5tRTMzN0I4cjhMZTFmNmpSVGZnMnVkUDlBemxBMzRFPQ==;MjQ5ODkzOUAzMjMxMmUzMDJlMzBMM2dLcFBlT2h2UlppODJ4aFRvOHVPVHlUZGYvazNIcjVUeFI2blIzUHpnPQ==;Mgo+DSMBMAY9C3t2VFhiQlRPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSXhRdUViXHpdeH1RQmY=;MjQ5ODk0MUAzMjMxMmUzMDJlMzBtWEZ4UE93dzZnM3FMQ0hybGxja0taRzJSdkM3RlB0NGQzVFJTTzhRU0hNPQ==;MjQ5ODk0MkAzMjMxMmUzMDJlMzBEZy9hVkZFWTdveTZwazBXY1BFMXk4RkxlcVBucUQvakRQcHk2QnJoK0RjPQ==;MjQ5ODk0M0AzMjMxMmUzMDJlMzBnd1pPZXhGL2h2Zk5tRTMzN0I4cjhMZTFmNmpSVGZnMnVkUDlBemxBMzRFPQ==");
 
-        //    }
-        //    else
-        //    {
-        //        Application.Current.Shutdown();
-        //    }
-        //}
+            base.OnInitialized();
+            //var startup = Container.Resolve<StartupWindow>();
+            //var result = startup.ShowDialog();
+            //if (result != null && result.Value)
+            //{
+            //    base.OnInitialized();
+
+            //}
+            //else
+            //{
+            //    Application.Current.Shutdown();
+            //}
+        }
 
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
         {
             base.ConfigureRegionAdapterMappings(regionAdapterMappings);
             regionAdapterMappings.RegisterMapping(typeof(DockingManager), Container.Resolve<DockingManagerRegionAdapter>());
+            regionAdapterMappings.RegisterMapping(typeof(GroupBar), Container.Resolve<SyncGroupBarRegionAdapter>());
+        }
+
+        protected override void ConfigureDefaultRegionBehaviors(IRegionBehaviorFactory regionBehaviors)
+        {
+            base.ConfigureDefaultRegionBehaviors(regionBehaviors);
+            regionBehaviors.AddIfMissing(DependentViewRegionBehavior.BehaviorKey, typeof(DependentViewRegionBehavior));
+
         }
     }
 }

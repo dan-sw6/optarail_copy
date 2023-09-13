@@ -1,8 +1,10 @@
-﻿<Window x:Class="OptaRail.Views.MainWindow"
+﻿<syncfusion:ChromelessWindow x:Class="OptaRail.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=Windows11Light}"
+        xmlns:core ="clr-namespace:OptaRail.Core;assembly=OptaRail.Core"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" WindowState="Maximized" 
@@ -11,12 +13,17 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <RowDefinition />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Menu
-                Name="Menu"
-                />
+            <Menu prism:RegionManager.RegionName="{x:Static core:RegionNames.MenuRegion}"></Menu>
+
+            <DockPanel Grid.Row="1" LastChildFill="True">
+                <syncfusion:GroupBar Width="200" DockPanel.Dock="Left" prism:RegionManager.RegionName="{x:Static core:RegionNames.BarRegion}"></syncfusion:GroupBar>
+                <ContentControl DockPanel.Dock="Bottom" prism:RegionManager.RegionName="{x:Static core:RegionNames.StateRegion}"></ContentControl>
+                <ContentControl prism:RegionManager.RegionName="{x:Static core:RegionNames.ContentRegion}"></ContentControl>
+            </DockPanel>
         </Grid>
     </Grid>
-</Window>
+</syncfusion:ChromelessWindow>

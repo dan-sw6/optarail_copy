@@ -5,10 +5,12 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="22.2.12" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Syncfusion.Tools.Wpf">
-      <HintPath>..\..\..\..\.nuget\packages\syncfusion.tools.wpf\21.2.5\lib\net6.0-windows7.0\Syncfusion.Tools.WPF.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\OptaRail.Core\OptaRail.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
   </ItemGroup>
 </Project>

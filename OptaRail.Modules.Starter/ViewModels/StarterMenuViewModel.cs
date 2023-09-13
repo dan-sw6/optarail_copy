@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OptaRail.Modules.Primary.ViewModels
+namespace OptaRail.Modules.Starter.ViewModels
 {
-    public class ViewAViewModel : BindableBase
+    public class StarterMenuViewModel : BindableBase
     {
         private string _message;
         public string Message
@@ -17,7 +17,7 @@ namespace OptaRail.Modules.Primary.ViewModels
             set { SetProperty(ref _message, value); }
         }
 
-        public ViewAViewModel()
+        public StarterMenuViewModel()
         {
             Message = "View A from your Prism Module";
         }
