@@ -5,19 +5,23 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using OptaRail.Infrastructure.Interfaces;
+using OptaRail.SQLiteDataAccess.Context;
 
-namespace OptaRail.Infrastructure
+namespace OptaRail.SQLiteDataAccess
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly DbContext _dbContext;
-        private readonly DbSet<T> _entitiySet;
+        // ReSharper disable once MemberCanBePrivate.Global
+        protected readonly AppDbContext _dbContext;
+        private readonly DbSet<T> _entitySet;
 
 
-        public GenericRepository(DbContext dbContext)
+
+        public GenericRepository(AppDbContext dbContext)
         {
-            _dbContext = dbContext;
-            _entitiySet = _dbContext.Set<T>();
+            _dbContext = dbContext?? throw new ArgumentNullException(nameof(dbContext)); ;
+            _entitySet = dbContext.Set<T>();
         }
 
 
@@ -37,28 +41,28 @@ namespace OptaRail.Infrastructure
             => await _dbContext.AddRangeAsync(entities, cancellationToken);
 
 
-        public T Get(Expression<Func<T, bool>> expression)
-            => _entitiySet.FirstOrDefault(expression);
+        public T? Get(Expression<Func<T, bool>> expression)
+            => _entitySet.FirstOrDefault(expression);
 
 
         public IEnumerable<T> GetAll()
-            => _entitiySet.AsEnumerable();
+            => _entitySet.AsEnumerable();
 
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> expression)
-            => _entitiySet.Where(expression).AsEnumerable();
+            => _entitySet.Where(expression).AsEnumerable();
 
 
         public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default)
-            => await _entitiySet.ToListAsync(cancellationToken);
+            => await _entitySet.ToListAsync(cancellationToken);
 
 
         public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default)
-            => await _entitiySet.Where(expression).ToListAsync(cancellationToken);
+            => await _entitySet.Where(expression).ToListAsync(cancellationToken);
 
 
-        public async Task<T> GetAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default)
-            => await _entitiySet.FirstOrDefaultAsync(expression, cancellationToken);
+        public async Task<T?> GetAsync(Expression<Func<T, bool>> expression, CancellationToken cancellationToken = default)
+            => await _entitySet.FirstOrDefaultAsync(expression, cancellationToken);
 
 
         public void Remove(T entity)

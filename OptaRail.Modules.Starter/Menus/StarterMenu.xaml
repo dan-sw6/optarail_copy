@@ -1,7 +1,7 @@
 ﻿<Menu x:Class="OptaRail.Modules.Starter.Menus.StarterMenu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:OptaRail.Modules.Starter.Views"
+             xmlns:local="clr-namespace:OptaRail.Modules.Starter.Menus"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
