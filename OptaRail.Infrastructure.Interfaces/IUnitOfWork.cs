@@ -8,10 +8,10 @@ namespace OptaRail.Infrastructure.Interfaces
 {
     public interface IUnitOfWork:IDisposable
     {
-        IRailDocumentRepository RailDocuments { get; }
+        IGenericRepository<T>? GetRepository<T>() where T : class;
         void Commit();
-        void Rollback();
-        Task CommitAsync();
+        void Rollback(); 
+        Task<int> CommitAsync();
         Task RollbackAsync();
     }
 }

@@ -1,12 +1,19 @@
 ﻿using OptaRail.Views;
 using Prism.Ioc;
 using System.Windows;
+using Microsoft.EntityFrameworkCore;
 using Prism.Modularity;
 using Prism.Regions;
 using OptaRail.Core.Adapters;
 using OptaRail.Modules.Starter;
 using Syncfusion.Windows.Tools.Controls;
 using OptaRail.Core.Behaviors;
+using OptaRail.Infrastructure.Interfaces;
+using OptaRail.Services;
+using OptaRail.Services.Interfaces;
+using OptaRail.SQLiteDataAccess;
+using OptaRail.SQLiteDataAccess.Context;
+using OptaRail.SQLiteDataAccess.Repositories;
 
 namespace OptaRail
 {
@@ -29,6 +36,16 @@ namespace OptaRail
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<IUnitOfWork, UnitOfWork>();
+            containerRegistry.RegisterSingleton<IRailDocumentRepository, RailDocumentRepository>();
+            containerRegistry.RegisterSingleton<IRailDocumentService, RailDocumentService>();
+
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            var options = optionsBuilder.UseSqlite("Data Source=..\\\\..\\\\sqlite.db").Options;
+            containerRegistry.Register<AppDbContext>(() => new AppDbContext(options));
+
+
+
 
         }
 

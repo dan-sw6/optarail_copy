@@ -28,7 +28,7 @@ namespace OptaRail.MongoDataAccess
             });
             
             
-            return null;
+            return new List<RailDocument>();
 
         }
 

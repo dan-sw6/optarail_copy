@@ -10,13 +10,16 @@ using OptaRail.Services.Interfaces;
 namespace OptaRail.Services
 {
     public class RailDocumentService:IRailDocumentService
-    {
+    {   
+        private readonly IUnitOfWork _unitOfWork;
 
-        private IRailDocumentRepository _railDocumentRepository;
+        private readonly IGenericRepository<RailDocument> _railDocumentRepository;
 
-        public RailDocumentService(IRailDocumentRepository railDocumentRepository)
+
+        public RailDocumentService(IUnitOfWork unitOfWork)
         {
-            _railDocumentRepository = railDocumentRepository;
+            _unitOfWork = unitOfWork;
+            _railDocumentRepository = unitOfWork.GetRepository<RailDocument>();
         }
 
         public IEnumerable<RailDocument> GetRailDocuments()
@@ -24,14 +27,9 @@ namespace OptaRail.Services
             return _railDocumentRepository.GetAll();
         }
 
-        public RailDocument GetRailDocument(string id)
-        {
-            throw new NotImplementedException();
-        }
-
         public RailDocument GetRailDocumentById(string id)
         {
-            throw new NotImplementedException();
+           return _railDocumentRepository.Get(x =>x.Id == id );
         }
 
         public RailDocument GetRailDocumentByName(string name)

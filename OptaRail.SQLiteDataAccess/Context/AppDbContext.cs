@@ -13,9 +13,9 @@ namespace OptaRail.SQLiteDataAccess.Context
     {
         public DbSet<RailDocument> RailDocuments { get; set; }
 
-        protected AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
 
     }

@@ -41,7 +41,7 @@ namespace OptaRail.SQLiteDataAccess
             => await _dbContext.AddRangeAsync(entities, cancellationToken);
 
 
-        public T? Get(Expression<Func<T, bool>> expression)
+        public T Get(Expression<Func<T, bool>> expression)
             => _entitySet.FirstOrDefault(expression);
 
 

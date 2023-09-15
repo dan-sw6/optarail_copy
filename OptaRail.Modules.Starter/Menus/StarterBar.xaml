@@ -3,19 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf"   
              xmlns:prism="http://prismlibrary.com/"
-             Header="PES"
-
+             DataContext="RailDocuments"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <syncfusion:GroupView  >
-        <syncfusion:GroupViewItem
-            Name="inbox"
-            ImageHorizontalAlignment="Right"
-            Text="Inbox"
-            ToolTip="Inbox" />
-        <syncfusion:GroupViewItem
-            Name="outbox"
-            ImageHorizontalAlignment="Right"
-            Text="Outbox"
-            ToolTip="Outbox" />
+    <syncfusion:GroupView >
+       
     </syncfusion:GroupView>
 </syncfusion:GroupBarItem>

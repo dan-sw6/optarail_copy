@@ -14,7 +14,13 @@
     <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="22.2.12" />
 </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OptaRail.Business\OptaRail.Domain.csproj" />
     <ProjectReference Include="..\OptaRail.Core\OptaRail.Core.csproj" />
+    <ProjectReference Include="..\OptaRail.Infrastructure.Interfaces\OptaRail.Infrastructure.Interfaces.csproj" />
+    <ProjectReference Include="..\OptaRail.Infrastructure\OptaRail.Infrastructure.csproj" />
     <ProjectReference Include="..\OptaRail.Modules.Starter\OptaRail.Modules.Starter.csproj" />
+    <ProjectReference Include="..\OptaRail.Services.Interfaces\OptaRail.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\OptaRail.Services\OptaRail.Services.csproj" />
+    <ProjectReference Include="..\OptaRail.SQLiteDataAccess\OptaRail.SQLiteDataAccess.csproj" />
   </ItemGroup>
 </Project>

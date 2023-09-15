@@ -8,7 +8,7 @@ namespace OptaRail.Infrastructure.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
-        T? Get(Expression<Func<T, bool>> expression);
+        T Get(Expression<Func<T, bool>> expression);
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAll(Expression<Func<T, bool>> expression);
         void Add(T entity);
