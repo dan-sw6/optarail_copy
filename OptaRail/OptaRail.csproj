@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
@@ -7,11 +7,12 @@
   <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
-      <PackageReference Include="Syncfusion.Shared.WPF" Version="22.2.12" />
-    <PackageReference Include="Syncfusion.Tools.WPF" Version="22.2.12" />
-    <PackageReference Include="Syncfusion.SfChromelessWindow.WPF" Version="22.2.12" />
-    <PackageReference Include="Syncfusion.Themes.Windows11Light.WPF" Version="22.2.12" />
-    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="22.2.12" />
+      <PackageReference Include="Syncfusion.Shared.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.SfChromelessWindow.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.Themes.Windows11Light.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="23.1.36" />
 </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OptaRail.Business\OptaRail.Domain.csproj" />

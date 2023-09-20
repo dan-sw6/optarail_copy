@@ -41,8 +41,8 @@ namespace OptaRail.Core.Adapters
         protected override void AttachBehaviors(IRegion region, DockingManager regionTarget)
         {
             base.AttachBehaviors(region, regionTarget);
-            if (!region.Behaviors.ContainsKey(DocumentRegionActiveAwareBehavior.BehaviorKey))
-                region.Behaviors.Add(DocumentRegionActiveAwareBehavior.BehaviorKey, new DocumentRegionActiveAwareBehavior { HostControl = regionTarget });
+            if (!region.Behaviors.ContainsKey(DockingManagerRegionActiveAwareBehavior.BehaviorKey))
+                region.Behaviors.Add(DockingManagerRegionActiveAwareBehavior.BehaviorKey, new DockingManagerRegionActiveAwareBehavior { HostControl = regionTarget });
         }
 
         protected override IRegion CreateRegion()

@@ -27,7 +27,7 @@ namespace OptaRail.Services
             return _railDocumentRepository.GetAll();
         }
 
-        public RailDocument GetRailDocumentById(string id)
+        public RailDocument GetRailDocumentById(int id)
         {
            return _railDocumentRepository.Get(x =>x.Id == id );
         }
@@ -40,6 +40,12 @@ namespace OptaRail.Services
         public void DeleteRailDocument(string id)
         {
             throw new NotImplementedException();
+        }
+
+        public void AddRailDocument(RailDocument railDocument)
+        {
+            _railDocumentRepository.Add(railDocument);
+            _unitOfWork.Commit();
         }
     }
 }

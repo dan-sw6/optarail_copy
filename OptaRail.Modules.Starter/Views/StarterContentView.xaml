@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="OptaRail.Modules.Starter.Views.StarterContentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+            <Image Source="../images/Logo Dark OptaRail.png" Stretch="Uniform" Height="100" Margin="20"></Image>
+    </Grid>
+</UserControl>

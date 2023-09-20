@@ -1,6 +1,8 @@
 ﻿using OptaRail.Core;
+using OptaRail.Modules.Starter.Dialogs;
 using OptaRail.Modules.Starter.Menus;
 using OptaRail.Modules.Starter.ViewModels;
+using OptaRail.Modules.Starter.Views;
 using OptaRail.Services.Interfaces;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -22,14 +24,18 @@ namespace OptaRail.Modules.Starter
 
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            _regionManager.RegisterViewWithRegion(RegionNames.BarRegion, typeof(StarterBar));
+            _regionManager.RegisterViewWithRegion(RegionNames.BarRegion, typeof(StarterBarView));
+            _regionManager.RegisterViewWithRegion(RegionNames.ContentRegion, typeof(StarterContentView));
+
 
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<StarterBar, StarterBarViewModel>();
+            containerRegistry.RegisterForNavigation<StarterBarView, StarterBarViewModel>();
             containerRegistry.RegisterForNavigation<StarterMenu, StarterMenuViewModel>();
+            containerRegistry.RegisterForNavigation<AddingProjectView>();
+            containerRegistry.RegisterDialog<CreateProjectDialog, CreateProjectDialogViewModel>();
 
         }
     }

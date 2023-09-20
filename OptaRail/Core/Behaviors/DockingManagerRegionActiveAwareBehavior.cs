@@ -1,20 +1,22 @@
 ﻿using Prism.Regions.Behaviors;
 using Prism.Regions;
-using Syncfusion.Windows.Tools.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Syncfusion.Windows.Tools.Controls;
 using System.Windows.Controls;
 using System.Windows;
 
 namespace OptaRail.Core.Behaviors
 {
-    public class DocumentRegionActiveAwareBehavior : RegionBehavior, IHostAwareRegionBehavior
+    public class DockingManagerRegionActiveAwareBehavior : RegionBehavior, IHostAwareRegionBehavior
     {
-        public const string BehaviorKey = "DocumentRegionActiveAwareBehavior";
+        public const string BehaviorKey = "DockingManagerRegionActiveAwareBehavior";
+
         DependencyObject _hostControl;
+
         public DependencyObject HostControl
         {
             get { return _hostControl; }
@@ -24,10 +26,12 @@ namespace OptaRail.Core.Behaviors
         protected override void OnAttach()
         {
             ((HostControl as DockingManager).DocContainer as DocumentContainer).AddTabDocumentAtLast = true;
-            ((HostControl as DockingManager).DocContainer as DocumentContainer).ActiveDocumentChanged += DocumentRegionActiveAwareBehavior_ActiveDocumentChanged;
+            ((HostControl as DockingManager).DocContainer as DocumentContainer).ActiveDocumentChanged +=
+                DocumentRegionActiveAwareBehavior_ActiveDocumentChanged;
         }
 
-        private void DocumentRegionActiveAwareBehavior_ActiveDocumentChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private void DocumentRegionActiveAwareBehavior_ActiveDocumentChanged(DependencyObject d,
+            DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue != null)
             {
@@ -72,6 +76,7 @@ namespace OptaRail.Core.Behaviors
                     }
                 }
             }
+
         }
     }
 }

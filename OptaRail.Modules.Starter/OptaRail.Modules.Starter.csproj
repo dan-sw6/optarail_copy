@@ -4,8 +4,17 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="images\JamIcons-PlusRectangle.png" />
+    <None Remove="images\JamIcons-PlusRectangle.svg" />
+    <None Remove="images\Logo Dark OptaRail.png" />
+    <None Remove="images\Logo White OptaRail.png" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-    <PackageReference Include="Syncfusion.Tools.WPF" Version="22.2.12" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="23.1.36" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OptaRail.Core\OptaRail.Core.csproj" />
@@ -13,6 +22,9 @@
     <ProjectReference Include="..\OptaRail.Services.Interfaces\OptaRail.Services.Interfaces.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Resource Include="images\JamIcons-PlusRectangle.png" />
+    <Resource Include="images\JamIcons-PlusRectangle.svg" />
+    <Resource Include="images\Logo Dark OptaRail.png" />
+    <Resource Include="images\Logo White OptaRail.png" />
   </ItemGroup>
 </Project>

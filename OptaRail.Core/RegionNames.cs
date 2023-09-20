@@ -14,5 +14,6 @@ namespace OptaRail.Core
         public const string StateRegion = "StateRegion";
         public const string BarRegion = "BarRegion";
         public const string ToolBarRegion = "ToolBarRegion";
+        public const string MainRegion = "MainRegion";
     }
 }

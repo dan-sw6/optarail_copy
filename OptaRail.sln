@@ -25,11 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptaRail.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptaRail.Modules.Starter", "OptaRail.Modules.Starter\OptaRail.Modules.Starter.csproj", "{A03024B3-E120-46F4-B7A9-7CCB9E686BBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptaRail.Services.Interfaces", "OptaRail.Services.Interfaces\OptaRail.Services.Interfaces.csproj", "{60FB56F5-4880-4B89-AF19-71DA56C7318B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptaRail.Services.Interfaces", "OptaRail.Services.Interfaces\OptaRail.Services.Interfaces.csproj", "{60FB56F5-4880-4B89-AF19-71DA56C7318B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptaRail.Infrastructure.Interfaces", "OptaRail.Infrastructure.Interfaces\OptaRail.Infrastructure.Interfaces.csproj", "{5D3E2DF6-5349-441D-8439-66D050576CBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptaRail.Infrastructure.Interfaces", "OptaRail.Infrastructure.Interfaces\OptaRail.Infrastructure.Interfaces.csproj", "{5D3E2DF6-5349-441D-8439-66D050576CBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptaRail.SQLiteDataAccess", "OptaRail.SQLiteDataAccess\OptaRail.SQLiteDataAccess.csproj", "{A85B4640-A7AE-46D0-9B55-5FD282C7F655}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptaRail.SQLiteDataAccess", "OptaRail.SQLiteDataAccess\OptaRail.SQLiteDataAccess.csproj", "{A85B4640-A7AE-46D0-9B55-5FD282C7F655}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

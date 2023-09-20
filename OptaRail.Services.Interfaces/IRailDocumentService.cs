@@ -12,10 +12,11 @@ namespace OptaRail.Services.Interfaces
      
         IEnumerable<RailDocument> GetRailDocuments();
 
-        RailDocument GetRailDocumentById(string id);
+        RailDocument GetRailDocumentById(int id);
         RailDocument GetRailDocumentByName(string name);
 
         void DeleteRailDocument(string id); 
 
+        void AddRailDocument (RailDocument railDocument);
     }
 }

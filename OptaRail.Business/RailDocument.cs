@@ -9,33 +9,48 @@ namespace OptaRail.Domain
 {
     public class RailDocument:BindableBase
     {
-        private string _title;
-        private string _description;
-        private string _id;
+        private string? _title;
+        private string? _addInfo;
 
-        public RailDocument(string title, string description, string id)
+        private string? _projectName;
+
+
+        private string? _cipher;
+
+
+        public RailDocument()
+        {
+
+        }
+        public RailDocument(string title, string addInfo)
         {
             _title = title;
-            _description = description;
-            _id = id;
+            _addInfo = addInfo;
+         
         }
 
-        public string Id
+        public string Cipher
         {
-            get { return _id; }
-            set { SetProperty(ref _id, value); }
+            get { return _cipher; }
+            set { SetProperty(ref _cipher, value); }
         }
-
+        public string ProjectName
+        {
+            get { return _projectName; }
+            set { SetProperty(ref _projectName, value); }
+        }
+        public int Id { get; set; }
+        
     
         public string Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-        public string Description
+        public string AddInfo
         {
-            get { return _description; }
-            set { SetProperty(ref _description, value); }
+            get { return _addInfo; }
+            set { SetProperty(ref _addInfo, value); }
         }
 
 

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="OptaRail.Modules.Starter.Views.StarterBarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:syncfusionskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+             syncfusionskin:SfSkinManager.Theme="{syncfusionskin:SkinManagerExtension ThemeName=Windows11Light}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="addIconTemplate">
+            <Grid Width="16" Height="20">
+                <Path Data="M9 10V8h2v2h2v2h-2v2H9v-2H7v-2h2zm-5 8h12V6h-4V2H4v16zm-2 1V0h12l4 4v16H2v-1z"
+                  Fill="Black" Stretch="Fill"></Path>
+               </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="removeIconTemplate">
+            <Grid Width="12" Height="18">
+                <Path Data="M128 405.429C128 428.846 147.198 448 170.667 448h170.667C364.802 448 384 428.846 384 405.429V160H128v245.429zM416 96h-80l-26.785-32H202.786L176 96H96v32h320V96z"
+                      Fill="Black" Stretch="Fill"></Path>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <DockPanel>
+        <syncfusion:GroupBar DockPanel.Dock="Top" DataContext="{Binding RailDocuments}">
+            <syncfusion:GroupBar.Style>
+                <Style TargetType="syncfusion:GroupBar">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                            <DataTrigger Binding="{ Binding RailDocuments.Count}" Value="0">
+                                <Setter Property="Visibility" Value="Visible"></Setter>
+                            </DataTrigger>
+                    </Style.Triggers>
+                    
+                </Style>
+            </syncfusion:GroupBar.Style>
+            <syncfusion:GroupBarItem Header="{Binding Title}">
+                <StackPanel Orientation="Vertical">
+                    <syncfusion:ButtonAdv  SizeMode="Small" Label="" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource removeIconTemplate}"  
+                                    Margin="10"      ></syncfusion:ButtonAdv>
+                </StackPanel>
+            </syncfusion:GroupBarItem>
+        </syncfusion:GroupBar>
+
+        <StackPanel DockPanel.Dock="Bottom">
+            <syncfusion:ButtonAdv Label="Создать проект" SizeMode="Large" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource addIconTemplate}" 
+                                  Margin="10" Command="{ Binding CreateProjectCommand}"  ></syncfusion:ButtonAdv>
+        </StackPanel>
+    </DockPanel>
+</UserControl>
