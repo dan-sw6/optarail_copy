@@ -38,7 +38,7 @@ namespace OptaRail.Modules.Starter.ViewModels
                 {
                     var addDoc = result.Parameters.GetValue<RailDocument>("RailDocument");
                     _railDocumentService.AddRailDocument(addDoc);
-
+                    UpdateRailDoc();
                 }
             });
 
@@ -54,12 +54,17 @@ namespace OptaRail.Modules.Starter.ViewModels
             _railDocumentService = railDocumentService;
             _regionManager = regionManager;
             _dialogService = dialogService;
-            RailDocuments = new ObservableCollection<RailDocument>(_railDocumentService.GetRailDocuments());
-            
+            UpdateRailDoc();
+
         }
 
+        void UpdateRailDoc()
+        {
+            RailDocuments = new ObservableCollection<RailDocument>(_railDocumentService.GetRailDocuments());
+            RaisePropertyChanged("RailDocuments");
 
 
+        }
 
     }
 }

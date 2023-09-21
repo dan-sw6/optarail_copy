@@ -29,12 +29,12 @@ namespace OptaRail.Domain
          
         }
 
-        public string Cipher
+        public string? Cipher
         {
             get { return _cipher; }
             set { SetProperty(ref _cipher, value); }
         }
-        public string ProjectName
+        public string? ProjectName
         {
             get { return _projectName; }
             set { SetProperty(ref _projectName, value); }
@@ -42,12 +42,12 @@ namespace OptaRail.Domain
         public int Id { get; set; }
         
     
-        public string Title
+        public string? Title
         {
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-        public string AddInfo
+        public string? AddInfo
         {
             get { return _addInfo; }
             set { SetProperty(ref _addInfo, value); }

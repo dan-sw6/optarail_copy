@@ -17,23 +17,24 @@ namespace OptaRail.Modules.Starter.ViewModels
         private DelegateCommand<object> _dialogCommand;
 
         public DelegateCommand<object> DialogCommand =>
-            _dialogCommand ??= new DelegateCommand<ButtonResult>(ExecuteDialogCommand);
+            _dialogCommand ??= new DelegateCommand<object>(ExecuteDialogCommand);
 
         void ExecuteDialogCommand(object parameterName)
         {
-            ButtonResult result = parameterName as ButtonResult;
+            ButtonResult result = (ButtonResult) parameterName;
+             
             
-            
-            if (parameterName == ButtonResult.OK)
+            if (result == ButtonResult.OK)
             {
                 var parametres = new DialogParameters {{"RailDocument", RailDocument}};
-                RequestClose?.Invoke(new DialogResult(parameterName,parametres));
+                RequestClose?.Invoke(new DialogResult(result, parametres));
             }
-			else if (parameterName == ButtonResult.Cancel)
+			else if (result == ButtonResult.Cancel)
             {
                 var parametres = new DialogParameters();
                
-                RequestClose?.Invoke(new DialogResult(parameterName, parametres));
+                RequestClose?.Invoke(new DialogResult(result, parametres));
+
             }
         }
 
@@ -65,5 +66,8 @@ namespace OptaRail.Modules.Starter.ViewModels
 		public string Title => "Создание нового проекта";
 
 		public event Action<IDialogResult> RequestClose;
+
+
+        
 	}
 }

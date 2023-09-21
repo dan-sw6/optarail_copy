@@ -21,26 +21,35 @@
         </DataTemplate>
     </UserControl.Resources>
     <DockPanel>
-        <syncfusion:GroupBar DockPanel.Dock="Top" DataContext="{Binding RailDocuments}">
+        <syncfusion:GroupBar DockPanel.Dock="Top" ItemsSource="{Binding RailDocuments}">
             <syncfusion:GroupBar.Style>
                 <Style TargetType="syncfusion:GroupBar">
-                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Setter Property="Visibility" Value="Visible"/>
                     <Style.Triggers>
-                            <DataTrigger Binding="{ Binding RailDocuments.Count}" Value="0">
-                                <Setter Property="Visibility" Value="Visible"></Setter>
+                            <DataTrigger Binding="{ Binding Count}" Value="0">
+                                <Setter Property="Visibility" Value="Collapsed"></Setter>
                             </DataTrigger>
                     </Style.Triggers>
                     
                 </Style>
             </syncfusion:GroupBar.Style>
-            <syncfusion:GroupBarItem Header="{Binding Title}">
-                <StackPanel Orientation="Vertical">
-                    <syncfusion:ButtonAdv  SizeMode="Small" Label="" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource removeIconTemplate}"  
-                                    Margin="10"      ></syncfusion:ButtonAdv>
-                </StackPanel>
-            </syncfusion:GroupBarItem>
-        </syncfusion:GroupBar>
 
+            <syncfusion:GroupBar.ItemContainerStyle>
+                <Style TargetType="{x:Type syncfusion:GroupBarItem}">
+                    <Setter Property="HeaderText" Value="{Binding Title}"/>
+                    <Setter Property="ContentTemplate" >
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <syncfusion:ButtonAdv  SizeMode="Small" Label="" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource removeIconTemplate}"  
+                                                           Margin="10"      ></syncfusion:ButtonAdv>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>   
+                </Style>
+            </syncfusion:GroupBar.ItemContainerStyle>
+        </syncfusion:GroupBar>
         <StackPanel DockPanel.Dock="Bottom">
             <syncfusion:ButtonAdv Label="Создать проект" SizeMode="Large" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource addIconTemplate}" 
                                   Margin="10" Command="{ Binding CreateProjectCommand}"  ></syncfusion:ButtonAdv>

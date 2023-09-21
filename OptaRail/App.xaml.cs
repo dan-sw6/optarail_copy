@@ -14,6 +14,7 @@ using OptaRail.Services.Interfaces;
 using OptaRail.SQLiteDataAccess;
 using OptaRail.SQLiteDataAccess.Context;
 using OptaRail.SQLiteDataAccess.Repositories;
+using Syncfusion.SfSkinManager;
 
 namespace OptaRail
 {
@@ -25,6 +26,7 @@ namespace OptaRail
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjcwNzg2N0AzMjMzMmUzMDJlMzBjVk1DaVAwQ21EOE1IK2UwMFdLV1Q3REd6SzNxZkFuSjdKeklGTzRXeDZJPQ==\r\n");
+            SfSkinManager.ApplyStylesOnApplication = true;
 
         }
 

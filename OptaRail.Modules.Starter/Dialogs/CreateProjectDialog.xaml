@@ -44,9 +44,9 @@
                                  VerticalAlignment="Center" Width="200" Watermark="Введите дополнительную информацию" Text="{Binding AddInfo }" ></syncfusion:SfTextBoxExt>
 
         <syncfusion:ButtonAdv Grid.Column="0" Grid.Row="3"  SizeMode="Normal" Label="OK" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource OKIconTemplate}"  
-                              Margin="10"  Command="{Binding DialogCommand }" CommandParameter="Ok"    ></syncfusion:ButtonAdv>
+                              Margin="10"  Command="{Binding DialogCommand }" CommandParameter="{x:Static prism:ButtonResult.OK}"    ></syncfusion:ButtonAdv>
         <syncfusion:ButtonAdv Grid.Column="1" Grid.Row="3"  SizeMode="Normal" Label="Отмена" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource CancelIconTemplate}"  
-                              Margin="10"  Command="{Binding DialogCommand }" CommandParameter="Cancel"    ></syncfusion:ButtonAdv>
+                              Margin="10"  Command="{Binding DialogCommand }" CommandParameter="{x:Static prism:ButtonResult.Cancel}"    ></syncfusion:ButtonAdv>
 
     </Grid>
 </UserControl>
