@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!-- ####################################################################
+
+This file was generates automatically via the 
+IconPacks.Browser (MIT-License). 
+
+Visit https://github.com/MahApps/MahApps.Metro.IconPacks and 
+https://github.com/MahApps/MahApps.Metro.IconPacks/blob/develop/LICENSE 
+for more information.
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+Icon-Name: 			PlusRectangle
+Iconpack:			JamIcons
+Iconpack-Homepage: 	https://jam-icons.com/
+Iconpack-License:	https://github.com/michaelampr/jam/blob/master/LICENSE
+
+#####################################################################-->
+
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="48"
+     height="48">
+    <path d="M75 250A25 25 0 0 1 50 225V75A25 25 0 0 1 75 50H225A25 25 0 0 1 250 75V225A25 25 0 0 1 225 250H75zM75 275H225A50 50 0 0 0 275 225V75A50 50 0 0 0 225 25H75A50 50 0 0 0 25 75V225A50 50 0 0 0 75 275zM162.5 137.5V87.5A12.5 12.5 0 0 0 137.5 87.5V137.5H87.5A12.5 12.5 0 0 0 87.5 162.5H137.5V212.5A12.5 12.5 0 1 0 162.5 212.5V162.5H212.5A12.5 12.5 0 0 0 212.5 137.5H162.5z"
+          style="fill:#000000;
+                 stroke:none
+                 stroke-width:0;
+                 stroke-linecap:flat;
+                 stroke-linejoin:miter;"
+          transform="matrix(0.192,0,0,-0.192,-4.8,52.800000000000004)" />
+</svg>

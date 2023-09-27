@@ -1,5 +1,4 @@
 ﻿using OptaRail.Core;
-using OptaRail.Modules.Starter.Dialogs;
 using OptaRail.Modules.Starter.Menus;
 using OptaRail.Modules.Starter.ViewModels;
 using OptaRail.Modules.Starter.Views;
@@ -34,8 +33,8 @@ namespace OptaRail.Modules.Starter
         {
             containerRegistry.RegisterForNavigation<StarterBarView, StarterBarViewModel>();
             containerRegistry.RegisterForNavigation<StarterMenu, StarterMenuViewModel>();
-            containerRegistry.RegisterForNavigation<AddingProjectView>();
-            containerRegistry.RegisterDialog<CreateProjectDialog, CreateProjectDialogViewModel>();
+            
+    
 
         }
     }

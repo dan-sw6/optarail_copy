@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace OptaRail.Modules.Starter.Dialogs
+namespace OptaRail.Dialogs
 {
     /// <summary>
     /// Interaction logic for CreateProjectDialog

@@ -2,18 +2,21 @@
 using Prism.Ioc;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
+using OptaRail.Core;
 using Prism.Modularity;
 using Prism.Regions;
 using OptaRail.Core.Adapters;
 using OptaRail.Modules.Starter;
 using Syncfusion.Windows.Tools.Controls;
 using OptaRail.Core.Behaviors;
+using OptaRail.Dialogs;
 using OptaRail.Infrastructure.Interfaces;
 using OptaRail.Services;
 using OptaRail.Services.Interfaces;
 using OptaRail.SQLiteDataAccess;
 using OptaRail.SQLiteDataAccess.Context;
 using OptaRail.SQLiteDataAccess.Repositories;
+using OptaRail.ViewModels;
 using Syncfusion.SfSkinManager;
 
 namespace OptaRail
@@ -41,7 +44,9 @@ namespace OptaRail
             containerRegistry.RegisterSingleton<IUnitOfWork, UnitOfWork>();
             containerRegistry.RegisterSingleton<IRailDocumentRepository, RailDocumentRepository>();
             containerRegistry.RegisterSingleton<IRailDocumentService, RailDocumentService>();
-
+            containerRegistry.RegisterSingleton<IShellService, ShellService>();
+            containerRegistry.RegisterForNavigation<StartUpWindow, StartUpWindowViewModel>();
+            containerRegistry.RegisterDialog<CreateProjectDialog, CreateProjectDialogViewModel>();
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             var options = optionsBuilder.UseSqlite("Data Source=..\\\\..\\\\sqlite.db").Options;
             containerRegistry.Register<AppDbContext>(() => new AppDbContext(options));
@@ -51,26 +56,26 @@ namespace OptaRail
 
         }
 
-        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog) 
         {
             moduleCatalog.AddModule<StarterModule>();
         }
 
         protected override void OnInitialized()
         {
+            SfSkinManager.ApplyStylesOnApplication = true;
 
-            base.OnInitialized();
-            //var startup = Container.Resolve<StartupWindow>();
-            //var result = startup.ShowDialog();
-            //if (result != null && result.Value)
-            //{
-            //    base.OnInitialized();
+            var startup = Container.Resolve<StartUpWindow>();
+            var result = startup.ShowDialog();
+            if (result != null && result.Value)
+            {
+                base.OnInitialized();
 
-            //}
-            //else
-            //{
-            //    Application.Current.Shutdown();
-            //}
+            }
+            else
+            {
+                Application.Current.Shutdown();
+            }
         }
 
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)

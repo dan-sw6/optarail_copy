@@ -5,6 +5,11 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\JamIcons-PlusRectangle.png" />
+    <None Remove="Images\JamIcons-PlusRectangle.svg" />
+    <None Remove="Images\Logo Dark OptaRail.png" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
       <PackageReference Include="Syncfusion.Shared.WPF" Version="23.1.36" />
@@ -23,5 +28,15 @@
     <ProjectReference Include="..\OptaRail.Services.Interfaces\OptaRail.Services.Interfaces.csproj" />
     <ProjectReference Include="..\OptaRail.Services\OptaRail.Services.csproj" />
     <ProjectReference Include="..\OptaRail.SQLiteDataAccess\OptaRail.SQLiteDataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\JamIcons-PlusRectangle.png" />
+    <Resource Include="Images\JamIcons-PlusRectangle.svg" />
+    <Resource Include="Images\Logo Dark OptaRail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Dialogs\CreateProjectDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

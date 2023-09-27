@@ -17,6 +17,14 @@ namespace OptaRail.Domain
 
         private string? _cipher;
 
+        private string _developer;
+
+        public string Developer
+        {
+            get { return _developer; }
+            set { SetProperty(ref _developer, value); }
+        }
+
 
         public RailDocument()
         {
@@ -29,6 +37,7 @@ namespace OptaRail.Domain
          
         }
 
+   
         public string? Cipher
         {
             get { return _cipher; }

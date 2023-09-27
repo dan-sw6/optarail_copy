@@ -3,9 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:OptaRail"
              xmlns:prism="http://prismlibrary.com/" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf">
     <Application.Resources>
         <ResourceDictionary>
+            <Style TargetType="syncfusion:SfTextBoxExt">
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="5"></Setter>
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
