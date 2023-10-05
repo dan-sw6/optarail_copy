@@ -1,0 +1,49 @@
+﻿<syncfusion:RibbonTab x:Class="OptaRail.Modules.Polygon.Menus.PolygonTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/" 
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             prism:ViewModelLocator.AutoWireViewModel="True" Caption="{Binding Title}"
+
+             >
+    <syncfusion:RibbonBar Header="Полигон">
+
+        <syncfusion:RibbonButton Width="82"
+                                         Margin="3,0,3,3"
+                                         Label="ПЕС"
+                                         SizeForm="Large"
+                                         
+                                         >
+ 
+        </syncfusion:RibbonButton>
+        <syncfusion:RibbonButton HorizontalAlignment="Left"
+                                 Label="Cut"
+                                 SizeForm="Small"
+                                 syncfusion:Ribbon.KeyTip="CT">
+            <syncfusion:RibbonButton.ToolTip>
+                <syncfusion:ScreenTip Description="Cut (Ctrl+X)">
+                    <TextBlock Width="130"
+                               HorizontalAlignment="Left"
+                               Text="Cut the selection and put it on the clipboard."
+                               TextWrapping="Wrap" />
+                </syncfusion:ScreenTip>
+            </syncfusion:RibbonButton.ToolTip>
+        </syncfusion:RibbonButton>
+        <syncfusion:RibbonButton HorizontalAlignment="Left"
+                                 Label="Copy"
+                                 SizeForm="Small"
+                                 syncfusion:Ribbon.KeyTip="CY">
+            <syncfusion:RibbonButton.ToolTip>
+                <syncfusion:ScreenTip Description="Copy (Ctrl+C)">
+                    <TextBlock Width="130"
+                               HorizontalAlignment="Left"
+                               Foreground="#FF4C4C4C"
+                               Text="Copy the selection and put it on the clipboard."
+                               TextWrapping="Wrap" />
+                </syncfusion:ScreenTip>
+            </syncfusion:RibbonButton.ToolTip>
+        </syncfusion:RibbonButton>
+       
+    </syncfusion:RibbonBar>
+
+</syncfusion:RibbonTab>

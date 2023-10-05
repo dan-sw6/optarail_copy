@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using OptaRail.Core.Behaviors;
 using Prism.Regions;
 using Syncfusion.Windows.Tools.Controls;
@@ -21,6 +22,14 @@ namespace OptaRail.Core.Adapters
 
         protected override void Adapt(IRegion region, DockingManager regionTarget)
         {
+
+            regionTarget.WindowClosing += (sender, e) =>
+            {
+                if (e.TargetItem is ContentControl item)
+                {
+                    region.Remove(item);;
+                };
+            };
             region.Views.CollectionChanged += (s, e) =>
             {
                 if (e.Action == NotifyCollectionChangedAction.Add)
@@ -31,6 +40,19 @@ namespace OptaRail.Core.Adapters
                         {
                             regionTarget.BeginInit();
                             regionTarget.Children.Add(element);
+                            regionTarget.EndInit();
+                        }
+                    }
+                }
+
+                if (e.Action == NotifyCollectionChangedAction.Remove)
+                {
+                    foreach (FrameworkElement element in e.OldItems)
+                    {
+                        if (regionTarget.Children.Contains(element))
+                        {
+                            regionTarget.BeginInit();
+                            regionTarget.Children.Remove(element);
                             regionTarget.EndInit();
                         }
                     }

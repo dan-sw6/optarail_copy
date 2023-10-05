@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptaRail.Infrastructure.Int
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OptaRail.SQLiteDataAccess", "OptaRail.SQLiteDataAccess\OptaRail.SQLiteDataAccess.csproj", "{A85B4640-A7AE-46D0-9B55-5FD282C7F655}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptaRail.Modules.InitProject", "OptaRail.Modules.InitProject\OptaRail.Modules.InitProject.csproj", "{9E3910E5-D212-467B-8376-6F62601C72F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,6 +91,10 @@ Global
 		{A85B4640-A7AE-46D0-9B55-5FD282C7F655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A85B4640-A7AE-46D0-9B55-5FD282C7F655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A85B4640-A7AE-46D0-9B55-5FD282C7F655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3910E5-D212-467B-8376-6F62601C72F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3910E5-D212-467B-8376-6F62601C72F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3910E5-D212-467B-8376-6F62601C72F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3910E5-D212-467B-8376-6F62601C72F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +104,7 @@ Global
 		{C530F283-A03C-48CD-92A8-1C407AB9CF08} = {2983B7D4-560F-4174-941C-609D95C5D2B9}
 		{5E8F1F35-B5FE-470A-BF9A-E3EA2A515A56} = {2983B7D4-560F-4174-941C-609D95C5D2B9}
 		{A03024B3-E120-46F4-B7A9-7CCB9E686BBF} = {2983B7D4-560F-4174-941C-609D95C5D2B9}
+		{9E3910E5-D212-467B-8376-6F62601C72F8} = {2983B7D4-560F-4174-941C-609D95C5D2B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1C4290DB-3852-43A2-9FE4-B7BE1B7C5643}

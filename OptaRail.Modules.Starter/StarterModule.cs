@@ -13,12 +13,12 @@ namespace OptaRail.Modules.Starter
     public class StarterModule : IModule
     {
         private readonly IRegionManager _regionManager;
-        private readonly IRailDocumentService _railDocumentService;
+        private readonly IRailProjectService _railProjectService;
 
-        public StarterModule(IRegionManager regionManager,  IRailDocumentService railDocumentService)
+        public StarterModule(IRegionManager regionManager,  IRailProjectService railProjectService)
         {
             _regionManager = regionManager;
-            _railDocumentService = railDocumentService;
+            _railProjectService = railProjectService;
         }
 
         public void OnInitialized(IContainerProvider containerProvider)

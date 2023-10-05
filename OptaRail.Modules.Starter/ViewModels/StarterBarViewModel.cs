@@ -15,7 +15,7 @@ namespace OptaRail.Modules.Starter.ViewModels
     public class StarterBarViewModel : BindableBase
     {
         
-        IRailDocumentService _railDocumentService;
+        IRailProjectService _railProjectService;
        
         private readonly IRegionManager _regionManager;
         private readonly IDialogService _dialogService;
@@ -37,7 +37,7 @@ namespace OptaRail.Modules.Starter.ViewModels
                 if (result.Result == ButtonResult.OK)
                 {
                     var addDoc = result.Parameters.GetValue<RailDocument>("RailDocument");
-                    _railDocumentService.AddRailDocument(addDoc);
+                    _railProjectService.AddRailDocument(addDoc);
                     UpdateRailDoc();
                 }
             });
@@ -49,9 +49,9 @@ namespace OptaRail.Modules.Starter.ViewModels
             get { return _railDocuments; }
             set { SetProperty(ref _railDocuments, value); }
         }
-        public StarterBarViewModel(IRailDocumentService railDocumentService, IRegionManager regionManager, IDialogService dialogService)
+        public StarterBarViewModel(IRailProjectService railProjectService, IRegionManager regionManager, IDialogService dialogService)
         {
-            _railDocumentService = railDocumentService;
+            _railProjectService = railProjectService;
             _regionManager = regionManager;
             _dialogService = dialogService;
             UpdateRailDoc();
@@ -60,7 +60,7 @@ namespace OptaRail.Modules.Starter.ViewModels
 
         void UpdateRailDoc()
         {
-            RailDocuments = new ObservableCollection<RailDocument>(_railDocumentService.GetRailDocuments());
+            RailDocuments = new ObservableCollection<RailDocument>(_railProjectService.GetRailDocuments());
             RaisePropertyChanged("RailDocuments");
 
 

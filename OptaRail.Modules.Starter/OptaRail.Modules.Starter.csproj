@@ -11,10 +11,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
-    <PackageReference Include="Syncfusion.SfChart.WPF" Version="23.1.36" />
-    <PackageReference Include="Syncfusion.SfInput.WPF" Version="23.1.36" />
-    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="23.1.36" />
-    <PackageReference Include="Syncfusion.Tools.WPF" Version="23.1.36" />
+    <PackageReference Include="Syncfusion.SfChart.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="23.1.39" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OptaRail.Core\OptaRail.Core.csproj" />

@@ -9,14 +9,14 @@ using OptaRail.Services.Interfaces;
 
 namespace OptaRail.Services
 {
-    public class RailDocumentService:IRailDocumentService
+    public class RailProjectService:IRailProjectService
     {   
         private readonly IUnitOfWork _unitOfWork;
 
-        private readonly IGenericRepository<RailDocument> _railDocumentRepository;
+        private readonly IGenericRepository<RailDocument>? _railDocumentRepository;
 
 
-        public RailDocumentService(IUnitOfWork unitOfWork)
+        public RailProjectService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _railDocumentRepository = unitOfWork.GetRepository<RailDocument>();
@@ -37,9 +37,10 @@ namespace OptaRail.Services
             throw new NotImplementedException();
         }
 
-        public void DeleteRailDocument(string id)
+        public void DeleteRailDocument(RailDocument railDocument)
         {
-            throw new NotImplementedException();
+            _railDocumentRepository.Remove(railDocument);
+            _unitOfWork.Commit();
         }
 
         public void AddRailDocument(RailDocument railDocument)

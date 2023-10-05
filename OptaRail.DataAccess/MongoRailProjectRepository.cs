@@ -11,10 +11,10 @@ using OptaRail.Infrastructure.Interfaces;
 
 namespace OptaRail.MongoDataAccess
 {
-    public class MongoRailDocumentRepository:IRailDocumentRepository
+    public class MongoRailProjectRepository:IRailProjectRepository
     {
         private MongoClient _client;
-        public MongoRailDocumentRepository(string dataContext)
+        public MongoRailProjectRepository(string dataContext)
         {
             _client = new MongoClient(dataContext);
         }

@@ -4,7 +4,7 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 
-namespace OptaRail.ViewModels
+namespace OptaRail.Dialogs
 {
 	public class CreateProjectDialogViewModel : BindableBase, IDialogAware
 	{

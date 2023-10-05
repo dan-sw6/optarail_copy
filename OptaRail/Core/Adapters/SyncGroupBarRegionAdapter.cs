@@ -55,7 +55,7 @@ namespace OptaRail.Core.Adapters
 
         protected override IRegion CreateRegion()
         {
-            return new SingleActiveRegion();
+            return new AllActiveRegion();
         }
     }
 }

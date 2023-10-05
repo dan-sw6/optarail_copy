@@ -10,6 +10,7 @@
              ResizeMode="NoResize"
              Width="1024"
              Height="600"
+
              >
     <syncfusion:ChromelessWindow.Resources>
         <ResourceDictionary>
@@ -29,6 +30,9 @@
                 </Setter>
             </Style>
             
+
+            
+
             <ControlTemplate TargetType="GroupBox" x:Key="gbTemplate">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -97,7 +101,7 @@
         </Border>
  
        <GroupBox  Grid.Column="0" Grid.Row="2" Header="Проекты"  Margin="10" Template="{StaticResource gbTemplate}" >
-            <ListBox  Grid.Column="0" Grid.Row="0" ItemsSource="{Binding RailDocuments}"  HorizontalContentAlignment="Stretch"
+            <ListBox x:Name="listBox"  Grid.Column="0" Grid.Row="0" ItemsSource="{Binding RailDocuments}"  HorizontalContentAlignment="Stretch"
                                   SelectedItem="{Binding SelectedRailDocument}" Margin="2" >
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="ListBoxItem">
@@ -113,7 +117,16 @@
                                                    Text="{Binding Path=ProjectName}"
                                                    Style="{StaticResource BodyMedium}"/>
                                         <syncfusion:ButtonAdv  SizeMode="Small" HorizontalAlignment="Right" VerticalAlignment="Center" IconTemplate="{StaticResource removeIconTemplate}"  
-                                                    Margin="1"      >
+                                                    Margin="1"  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBox}}, Path=DataContext.DeleteRailDocumentCommand}" CommandParameter="{Binding}">
+                                             <syncfusion:ButtonAdv.Style>
+                                                 <Style TargetType="syncfusion:ButtonAdv">
+                                                     <Style.Triggers>
+                                                         <Trigger Property="IsMouseOver" Value="True">
+                                                             <Setter Property="IconTemplate" Value="{StaticResource removeIconTemplateOn}"></Setter>
+                                                         </Trigger>
+                                                     </Style.Triggers>
+                                                  </Style>
+                                             </syncfusion:ButtonAdv.Style>
                                         </syncfusion:ButtonAdv>
                         </DockPanel>
                                  
@@ -125,6 +138,35 @@
 
                     <syncfusion:SfGridSplitter Grid.Row="2" Grid.Column="0"  Width="5" HorizontalAlignment="Right" VerticalAlignment="Stretch" ShowsPreview="True"  EnableCollapseButton="True"/>
 
+        
+        <GroupBox Grid.Column="1" Grid.Row="2" Template="{StaticResource gbTemplate}" Margin="5,10,10,10" Header="Выбранный проект" >
+            <StackPanel DataContext="{Binding SelectedRailDocument}" >
+                <StackPanel.Style>
+                    <Style>
+                        <Setter Property="StackPanel.Visibility" Value="Visible"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=listBox, Path=SelectedItem}" Value="{x:Null}">
+                                <Setter Property="StackPanel.Visibility" Value="Collapsed"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+
+                <TextBlock   Text="Название проекта:"></TextBlock>
+                <syncfusion:SfTextBoxExt  HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Center"  Text="{Binding ProjectName }"  ></syncfusion:SfTextBoxExt>
+                <TextBlock   Text="Шифр:"></TextBlock>
+                <syncfusion:SfTextBoxExt  HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Center"  Text="{Binding Cipher }"  ></syncfusion:SfTextBoxExt>
+                <TextBlock   Text="Разработчик:"></TextBlock>
+                <syncfusion:SfTextBoxExt  HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Center"   Text="{Binding Developer }"  ></syncfusion:SfTextBoxExt>
+                <TextBlock   Text="Примечание"></TextBlock>
+                <syncfusion:SfTextBoxExt   HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Center"   Text="{Binding RAddInfo }"  ></syncfusion:SfTextBoxExt>
+                </StackPanel>
+        </GroupBox>
+
         <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
            <syncfusion:ButtonAdv Label="Создать проект" SizeMode="Normal" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" 
                                  IconTemplate="{StaticResource addIconTemplate}" 
@@ -132,9 +174,22 @@
        </StackPanel>
 
        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-           <syncfusion:ButtonAdv Label="Открыть проект" SizeMode="Normal" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" 
-                                 IconTemplate="{StaticResource openIconTemplate}" 
+           <syncfusion:ButtonAdv Label="Сохранить изменения" SizeMode="Normal" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" 
+                                 IconTemplate="{StaticResource saveIconTemplate}" 
                                  Margin="5" Command="{ Binding OpenProjectCommand}"  ></syncfusion:ButtonAdv>
+            <syncfusion:ButtonAdv Label="Открыть проект" SizeMode="Normal" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" 
+                                 IconTemplate="{StaticResource openIconTemplate}" 
+                                 Margin="5" Command="{ Binding OpenProjectCommand}" >
+                <syncfusion:ButtonAdv.Style>
+                    <Style TargetType="syncfusion:ButtonAdv">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=listBox, Path=SelectedItem}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </syncfusion:ButtonAdv.Style>
+            </syncfusion:ButtonAdv>
            <syncfusion:ButtonAdv Label="Выход" SizeMode="Normal" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" 
                                  IconTemplate="{StaticResource exitIconTemplate}" 
                                  Margin="5" Command="{ Binding ExitProjectCommand}"  ></syncfusion:ButtonAdv>

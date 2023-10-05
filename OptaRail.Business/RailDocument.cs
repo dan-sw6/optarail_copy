@@ -17,9 +17,9 @@ namespace OptaRail.Domain
 
         private string? _cipher;
 
-        private string _developer;
+        private string? _developer;
 
-        public string Developer
+        public string? Developer
         {
             get { return _developer; }
             set { SetProperty(ref _developer, value); }

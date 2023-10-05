@@ -5,19 +5,12 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:syncfusion="http://schemas.syncfusion.com/wpf" >
     <UserControl.Resources>
-        <DataTemplate x:Key="OKIconTemplate">
-            <Grid Width="16" Height="16">
-                <Path Data="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"
-                      Fill="Black" Stretch="Fill"></Path>
-            </Grid>
-        </DataTemplate>
-        <DataTemplate x:Key="CancelIconTemplate">
-            <Grid Width="16" Height="16">
-                <Path Data="M 11.503,22C 6.25634,22 2.00305,17.7467 2.00305,12.5C 2.00305,7.25329 6.25634,2.99999 11.503,2.99999C 16.7497,2.99999 21.003,7.25329 21.003,12.5C 21.003,17.7467 16.7498,22 11.503,22 Z M 11.5031,21C 16.1975,21 20.003,17.1944 20.003,12.5C 20.003,10.3319 19.1913,8.35344 17.8552,6.85187L 5.85494,18.8522C 7.35651,20.1883 9.33499,21 11.5031,21 Z M 11.5031,3.99999C 6.80863,3.99999 3.00305,7.80557 3.00305,12.5C 3.00305,14.6665 3.81361,16.6437 5.14801,18.1449L 17.1479,6.14495C 15.6468,4.81054 13.6696,3.99999 11.5031,3.99999 Z "
-                      Fill="Black" Stretch="Fill"></Path>
-            </Grid>
-        </DataTemplate>
-   
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Dictionaries/TextStyleResources.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="../Dictionaries/IconResources.xaml"></ResourceDictionary>
+             </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <StackPanel >
 
@@ -37,7 +30,7 @@
         <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
             <syncfusion:ButtonAdv  SizeMode="Normal" Label="OK" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource OKIconTemplate}"  
                                   Margin="10"  Command="{Binding DialogCommand }" CommandParameter="{x:Static prism:ButtonResult.OK}"     ></syncfusion:ButtonAdv>
-            <syncfusion:ButtonAdv  SizeMode="Normal" Label="Отмена" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource CancelIconTemplate}"  
+            <syncfusion:ButtonAdv  SizeMode="Normal" Label="Отмена" HorizontalAlignment="Center" VerticalAlignment="Center" IconTemplate="{StaticResource cancelIconTemplate}"  
                                   Margin="10"  Command="{Binding DialogCommand }" CommandParameter="{x:Static prism:ButtonResult.Cancel}"    ></syncfusion:ButtonAdv>
         </StackPanel>
         

@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\OptaRail.Business\OptaRail.Domain.csproj" />
     <ProjectReference Include="..\OptaRail.Infrastructure.Interfaces\OptaRail.Infrastructure.Interfaces.csproj" />
+    <ProjectReference Include="..\OptaRail.Infrastructure\OptaRail.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Syncfusion.Windows.Tools.Controls;
 using System.Windows.Controls;
 using System.Windows;
+using System.Windows.Automation;
 
 namespace OptaRail.Core.Behaviors
 {
@@ -28,6 +29,15 @@ namespace OptaRail.Core.Behaviors
             ((HostControl as DockingManager).DocContainer as DocumentContainer).AddTabDocumentAtLast = true;
             ((HostControl as DockingManager).DocContainer as DocumentContainer).ActiveDocumentChanged +=
                 DocumentRegionActiveAwareBehavior_ActiveDocumentChanged;
+            ((HostControl as DockingManager).DocContainer as DocumentContainer).DocumentClosing += DockingManagerRegionActiveAwareBehavior_DocumentClosing;
+        }
+
+        private void DockingManagerRegionActiveAwareBehavior_DocumentClosing(object sender, CancelingRoutedEventArgs e)
+        {
+            if (e.OriginalSource is ContentControl item)
+            {
+                Region.Remove(item);
+            }
         }
 
         private void DocumentRegionActiveAwareBehavior_ActiveDocumentChanged(DependencyObject d,

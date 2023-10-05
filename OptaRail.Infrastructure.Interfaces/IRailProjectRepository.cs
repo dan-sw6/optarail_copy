@@ -4,7 +4,7 @@ using OptaRail.Domain;
 
 namespace OptaRail.Infrastructure.Interfaces
 {
-    public interface IRailDocumentRepository
+    public interface IRailProjectRepository
     {
 
     }

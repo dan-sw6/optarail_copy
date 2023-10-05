@@ -11,6 +11,8 @@ using Syncfusion.Windows.Tools.Controls;
 using OptaRail.Core.Behaviors;
 using OptaRail.Dialogs;
 using OptaRail.Infrastructure.Interfaces;
+using OptaRail.Modules.InitProject;
+using OptaRail.Modules.Polygon;
 using OptaRail.Services;
 using OptaRail.Services.Interfaces;
 using OptaRail.SQLiteDataAccess;
@@ -29,7 +31,7 @@ namespace OptaRail
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjcwNzg2N0AzMjMzMmUzMDJlMzBjVk1DaVAwQ21EOE1IK2UwMFdLV1Q3REd6SzNxZkFuSjdKeklGTzRXeDZJPQ==\r\n");
-            SfSkinManager.ApplyStylesOnApplication = true;
+         
 
         }
 
@@ -42,34 +44,31 @@ namespace OptaRail
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<IUnitOfWork, UnitOfWork>();
-            containerRegistry.RegisterSingleton<IRailDocumentRepository, RailDocumentRepository>();
-            containerRegistry.RegisterSingleton<IRailDocumentService, RailDocumentService>();
+            containerRegistry.RegisterSingleton<IRailProjectRepository, RailProjectRepository>();
+            containerRegistry.RegisterSingleton<IRailProjectService, RailProjectService>();
             containerRegistry.RegisterSingleton<IShellService, ShellService>();
             containerRegistry.RegisterForNavigation<StartUpWindow, StartUpWindowViewModel>();
             containerRegistry.RegisterDialog<CreateProjectDialog, CreateProjectDialogViewModel>();
+            containerRegistry.RegisterDialog<MessageDialog, MessageDialogViewModel>();
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
             var options = optionsBuilder.UseSqlite("Data Source=..\\\\..\\\\sqlite.db").Options;
             containerRegistry.Register<AppDbContext>(() => new AppDbContext(options));
-
-
-
 
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog) 
         {
-            moduleCatalog.AddModule<StarterModule>();
+            moduleCatalog.AddModule<InitProjectModule>();
+            moduleCatalog.AddModule<PolygonModule>();
         }
 
         protected override void OnInitialized()
         {
-            SfSkinManager.ApplyStylesOnApplication = true;
-
             var startup = Container.Resolve<StartUpWindow>();
             var result = startup.ShowDialog();
             if (result != null && result.Value)
             {
-                base.OnInitialized();
+                    base.OnInitialized();
 
             }
             else

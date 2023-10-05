@@ -9,9 +9,9 @@ using OptaRail.SQLiteDataAccess.Context;
 
 namespace OptaRail.SQLiteDataAccess.Repositories
 {
-    public class RailDocumentRepository:GenericRepository<RailDocument>, IRailDocumentRepository
+    public class RailProjectRepository:GenericRepository<RailDocument>, IRailProjectRepository
     {
-        public RailDocumentRepository(AppDbContext dbContext) : base(dbContext)
+        public RailProjectRepository(AppDbContext dbContext) : base(dbContext)
         {
         }
     }

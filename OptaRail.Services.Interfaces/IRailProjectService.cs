@@ -6,7 +6,7 @@ using OptaRail.Infrastructure.Interfaces;
 
 namespace OptaRail.Services.Interfaces
 {
-    public interface IRailDocumentService
+    public interface IRailProjectService
     {
 
      
@@ -15,7 +15,7 @@ namespace OptaRail.Services.Interfaces
         RailDocument GetRailDocumentById(int id);
         RailDocument GetRailDocumentByName(string name);
 
-        void DeleteRailDocument(string id); 
+        void DeleteRailDocument(RailDocument railDocument); 
 
         void AddRailDocument (RailDocument railDocument);
     }

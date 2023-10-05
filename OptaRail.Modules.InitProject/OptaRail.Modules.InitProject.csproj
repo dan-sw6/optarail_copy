@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="images\map.png" />
+    <None Remove="images\railway-map %281%29.png" />
+    <None Remove="images\railway-map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <PackageReference Include="Syncfusion.SfDiagram.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.Themes.Office2016White.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.Themes.Windows11Light.WPF" Version="23.1.39" />
+    <PackageReference Include="Syncfusion.Tools.WPF" Version="23.1.39" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OptaRail.Core\OptaRail.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\map.png" />
+    <Resource Include="images\railway-map (1).png" />
+    <Resource Include="images\railway-map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+</Project>
