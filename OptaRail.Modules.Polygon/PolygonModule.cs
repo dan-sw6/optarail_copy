@@ -16,6 +16,7 @@ namespace OptaRail.Modules.Polygon
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<PolygonView, PolygonViewModel>();
+            containerRegistry.RegisterForNavigation<StencilView, StencilViewModel>();
         }
     }
 }

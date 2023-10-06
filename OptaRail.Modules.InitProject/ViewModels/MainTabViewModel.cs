@@ -34,6 +34,7 @@ namespace OptaRail.Modules.InitProject.ViewModels
         void ExecuteNavigateCommand(string uri)
         {
             _regionManager.RequestNavigate(RegionNames.MainRegion, uri);
+            _regionManager.RequestNavigate(RegionNames.MainRegion, "StencilView");
         }
 
      

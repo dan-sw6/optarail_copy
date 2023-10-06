@@ -1,0 +1,503 @@
+﻿<UserControl x:Class="OptaRail.Modules.Polygon.Views.StencilView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:prism="http://prismlibrary.com/"    
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             syncfusion:DockingManager.Header="Hello Pidor" syncfusion:DockingManager.State="Dock" 
+             syncfusion:DockingManager.SideInDockedMode="Left"
+             syncfusion:DockingManager.NoHeader="False"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Syncfusion.SfDiagram.Wpf;component/Resources/BasicShapes.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+     
+        <Style x:Key="SymbolStyle" TargetType="Path">
+            <Setter Property="Fill" Value="#FF5B9BD5 "/>
+            <Setter Property="Stroke" Value="#FFC8C8C8 "/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+
+        <Style x:Key="WeakEntity" TargetType="Path">
+            <Setter Property="Fill" Value="LightGray"/>
+            <Setter Property="Stroke" Value="SlateGray"/>
+            <Setter Property="StrokeThickness" Value="3"/>
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="StrokeDashArray" Value="2"/>
+        </Style>
+
+        <Style x:Key="WeakRelationship" TargetType="Path">
+            <Setter Property="Fill" Value="LightGray"/>
+            <Setter Property="Stroke" Value="SlateGray"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="StrokeDashArray" Value="1.5"/>
+        </Style>
+
+        <Style x:Key="DerivedAttribute" TargetType="Path">
+            <Setter Property="Fill" Value="Transparent"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="Stretch" Value="Fill"/>
+            <Setter Property="StrokeDashArray" Value="5"/>
+        </Style>
+
+        <sys:String x:Key="Two Side Flat Corner">
+            M 0 0 L 0 20 L 10 25 L 40 25 L 40 5 L 30 0 z
+        </sys:String>
+
+        <sys:String x:Key="Two Side Round Corner">
+            M 0 0 L 0 5 C 0 25 0 25 20 25 L 40 25 L 40 20 C 40 0 40 0 20 0 L 0 0 z
+        </sys:String>
+
+        <sys:String x:Key="Magnetoresistor_shape">
+            M 0 22.25 L 6.74 22.25 L 8.68 15.27 L 12.55 29.24 L 16.42 15.27 L 20.3 29.24 L 24.17 15.27 L 28.05 29.24 L 31.92 15.27 L 33.86 22.26 L 40 22.26 M 33.43 0 L 13.87 39.08 M 23.03 31.08 L 19.31 40 M 23.03 31.08 L 19.31 40
+        </sys:String>
+
+        <Style x:Key="StartSymbol" TargetType="Path">
+            <Setter Property="Fill" Value="#FF5B9BD5 "/>
+            <Setter Property="Stroke" Value="LightBlue" />
+            <Setter Property="StrokeThickness" Value="10"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+
+        <Style x:Key="StopSymbol" TargetType="Path">
+            <Setter Property="Fill" Value="#FF5B9BD5 "/>
+            <Setter Property="Stroke" Value="SteelBlue"/>
+            <Setter Property="StrokeThickness" Value="10"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+
+        <Style x:Key="ElecticalStyle" TargetType="Path">
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="Stretch" Value="Fill"/>
+        </Style>
+
+        <Style x:Key="portShapeStyle" TargetType="Path">
+            <Setter Property="Fill" Value="White"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="Stretch" Value="Fill"/></Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+           <syncfusion:Stencil Title="Элементы" ShowSearchTextBox="False">
+                <syncfusion:Stencil.SymbolSource>
+                    <syncfusion:SymbolCollection>
+                    #region Basic shapes
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitHeight="113" Name="Rectangle" UnitWidth="150" Shape="{StaticResource Rectangle}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Triangle" UnitWidth="150" UnitHeight="150" Shape="{StaticResource Triangle}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Plus" UnitWidth="150" UnitHeight="150" Shape="{StaticResource Plus}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Pentagon" UnitWidth="150" UnitHeight="150" Shape="{StaticResource Pentagon}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.35" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.35" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.2" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.8" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Hexagon" UnitWidth="150" UnitHeight="150" Shape="{StaticResource Hexagon}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.26" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.74" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.26" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.74" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Heptagon" UnitWidth="150" UnitHeight="150" Shape="{StaticResource Heptagon}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.10" NodeOffsetY="0.2" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.9" NodeOffsetY="0.2" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.64" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.64" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.28" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.72" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Octagon" UnitWidth="150" UnitHeight="150" Shape="{StaticResource Octagon}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.28" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.72" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.3" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.3" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.7" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.7" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.28" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.72" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Trapezoid" UnitWidth="150" UnitHeight="150" Shape="{StaticResource Trapezoid}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.9" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Decagon"  UnitWidth="113" UnitHeight="113" Shape="{StaticResource Decagon}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.34" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.65" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.1" NodeOffsetY="0.18" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.9" NodeOffsetY="0.18" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.1" NodeOffsetY="0.82" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.9" NodeOffsetY="0.82" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.34" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.65" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="RightTriangle" UnitWidth="150" UnitHeight="113" Shape="{StaticResource RightTriangle}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Cylinder" UnitWidth="113" UnitHeight="113" Shape="{StaticResource Cylinder}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.24" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Diamond" UnitWidth="150" UnitHeight="113" Shape="{StaticResource Diamond}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Two Side Flat Corner Rectnagle" UnitWidth="150" UnitHeight="113" Shape="{StaticResource Two Side Flat Corner}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.9" NodeOffsetY="0.1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.1" NodeOffsetY="0.9" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Two Side Round Corner Rectangle" UnitWidth="150" UnitHeight="113" Shape="{StaticResource Two Side Round Corner}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.9" NodeOffsetY="0.1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.1" NodeOffsetY="0.9" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Rounded Rectangle" UnitWidth="150" UnitHeight="113" Shape="{StaticResource RoundedRectangle}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.05" NodeOffsetY="0.05" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.95" NodeOffsetY="0.05" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.05" NodeOffsetY="0.95" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.95" NodeOffsetY="0.95" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Cloud" UnitWidth="94" UnitHeight="94" Shape="{StaticResource Cloud}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Cloud CallOut" UnitWidth="94" UnitHeight="94" Shape="{StaticResource CloudCallOut}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.05" NodeOffsetY="0.05" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.95" NodeOffsetY="0.05" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.05" NodeOffsetY="0.95" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.95" NodeOffsetY="0.95" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Two Side Rouded Corner Rectangle" UnitWidth="150" UnitHeight="113" Shape="{StaticResource TwoSideRoudedCorner}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.05" NodeOffsetY="0.05" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.95" NodeOffsetY="0.95" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Paralleogram" UnitWidth="150" UnitHeight="113" Shape="{StaticResource Paralleogram}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.05" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.95" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Frame" UnitWidth="150" UnitHeight="113" Shape="{StaticResource Frame}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" Name="Donut" UnitWidth="113" UnitHeight="113" Shape="{StaticResource Donut}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.15" NodeOffsetY="0.15" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.85" NodeOffsetY="0.15" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.15" NodeOffsetY="0.85" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.85" NodeOffsetY="0.85" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="94" Name="Rectangle CallOut" Shape="{StaticResource RectangleCallOut}"  />
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="94" Name="RoundedRectangle CallOut" Shape="{StaticResource RoundedRectangleCallOut}"  />
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="94" Name="Oval CallOut" Shape="{StaticResource OvalCallOut}"  />
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="150" UnitHeight="113" Name="Cube" Shape="{StaticResource Cube}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.45" NodeOffsetY="0.2" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.6" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.85" NodeOffsetY="0.55" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.45" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.55" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.4" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="113" Name="No Symbol" Shape="{StaticResource NoSymbol}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.15" NodeOffsetY="0.15" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.85" NodeOffsetY="0.15" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.15" NodeOffsetY="0.85" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.85" NodeOffsetY="0.85" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="113" Name="Four Point Star" Shape="{StaticResource FourPointStar}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.35" NodeOffsetY="0.35" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.65" NodeOffsetY="0.35" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.65" NodeOffsetY="0.65" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.35" NodeOffsetY="0.65" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="113" Name="Five Point Star" Shape="{StaticResource FivePointStar}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.02" NodeOffsetY="0.38" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.38" NodeOffsetY="0.38" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.6" NodeOffsetY="0.38" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.96" NodeOffsetY="0.4" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.68" NodeOffsetY="0.6" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.78" NodeOffsetY="0.96" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0.76" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.2" NodeOffsetY="0.94" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.3" NodeOffsetY="0.6" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.02" NodeOffsetY="0.38" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" Name="Six Point Star" UnitHeight="113" Shape="{StaticResource SixPointStar}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.6" NodeOffsetY="0.35" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.98" NodeOffsetY="0.26" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.69" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.98" NodeOffsetY="0.74" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.6" NodeOffsetY="0.64" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.4" NodeOffsetY="0.66" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.03" NodeOffsetY="0.73" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.28" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.03" NodeOffsetY="0.27" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.4" NodeOffsetY="0.34" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="113" Name="Seven Point Star" Shape="{StaticResource SevenPointStar}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.56" NodeOffsetY="0.36" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.88" NodeOffsetY="0.22" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.67" NodeOffsetY="0.48" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.99" NodeOffsetY="0.64" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.63" NodeOffsetY="0.63" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.72" NodeOffsetY="0.97" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.49" NodeOffsetY="0.7" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.29" NodeOffsetY="0.94" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.36" NodeOffsetY="0.65" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.02" NodeOffsetY="0.63" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.3" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.11" NodeOffsetY="0.22" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.4" NodeOffsetY="0.36" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="113" Name="Sixteen Point Star" Shape="{StaticResource SixteenPointStar}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.68" NodeOffsetY="0.04" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.84" NodeOffsetY="0.15" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.94" NodeOffsetY="0.31" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.96" NodeOffsetY="0.68" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.85" NodeOffsetY="0.85" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.69" NodeOffsetY="0.96" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.3" NodeOffsetY="0.94" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.14" NodeOffsetY="0.84" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.06" NodeOffsetY="0.68" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.04" NodeOffsetY="0.3" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.15" NodeOffsetY="0.16" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.3" NodeOffsetY="0.06" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="113" Name="Twenty Four Point Star" Shape="{StaticResource TwentyFourPointStar}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+
+                    <syncfusion:NodeViewModel Key="Basic Shapes" UnitWidth="113" UnitHeight="113" Name="ThirtyTwoPointStar" Shape="{StaticResource ThirtyTwoPointStar}" >
+                        <syncfusion:NodeViewModel.Ports>
+                            <syncfusion:PortCollection>
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="0" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="1" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0.5" NodeOffsetY="1" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                                <syncfusion:NodePortViewModel NodeOffsetX="0" NodeOffsetY="0.5" ShapeStyle="{StaticResource portShapeStyle}" Shape="{StaticResource Rectangle}" />
+                            </syncfusion:PortCollection>
+                        </syncfusion:NodeViewModel.Ports>
+                    </syncfusion:NodeViewModel>
+
+                    #endregion
+                </syncfusion:SymbolCollection>
+                </syncfusion:Stencil.SymbolSource>
+           </syncfusion:Stencil> 
+    </Grid>
+</UserControl>
